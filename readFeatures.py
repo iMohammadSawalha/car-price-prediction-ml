@@ -3,20 +3,13 @@ import os
 import re
 
 def listToString(s):
- 
-    # initialize an empty string
     str1 = "|"
- 
-    # return string
     return (str1.join(s))
-
 
 folder_path = "data"
 paths = os.listdir(folder_path)
-res = []
-counter = 1
-keysMax = 0
-keysNames = ""
+headers = ["سعر","شركة","موديل","سنة","لون السيارة","نوع الوقود","أصل السيارة","رخصة السيارة","نوع الجير","الزجاج","قوة الماتور","عداد السيارة","عدد الركاب","وسيلة الدفع","معروضة","أصحاب سابقون","إضافات"]
+result = []
 for path in paths:
     file = open(folder_path + "/" + path, 'r',encoding="utf-8")
     data = file.read()
@@ -56,39 +49,21 @@ for path in paths:
     if features:
         features.append("إضافات")
         if additions:
-            features.append(listToString(additions))
+            additions = listToString(additions).replace(",","|")
+            features.append(additions)
         else:
             features.append("null")
         for index,key in enumerate(features[::2]):
             sample[key] = features[1::2][index]
         # features[::2] # keys
         # features[1::2] # values
-    headers = ["شركة","موديل","سنة","لون السيارة","نوع الوقود","أصل السيارة","رخصة السيارة","نوع الجير","الزجاج","قوة الماتور","عداد السيارة","عدد الركاب","وسيلة الدفع","معروضة","أصحاب سابقون","إضافات","سعر"]
-    res += sample["شركة"] + "," + sample["موديل"] + "," + sample["سنة"] + "," + sample["لون السيارة"] + "," + sample["نوع الوقود"] + "," + sample["أصل السيارة"] + "," + sample["رخصة السيارة"] + "," + sample["نوع الجير"] + "," + sample["الزجاج"] + "," + sample["قوة الماتور"] + "," + sample["عداد السيارة"] + "," + sample["عدد الركاب"] + "," + sample["وسيلة الدفع"] + "," + sample["معروضة"] + "," + sample["أصحاب سابقون"] + "," + sample["إضافات"] + "," +sample["سعر"] + "\n"
+    result += sample["سعر"] + "," + sample["شركة"] + "," + sample["موديل"] + "," + sample["سنة"] + "," + sample["لون السيارة"] + "," + sample["نوع الوقود"] + "," + sample["أصل السيارة"] + "," + sample["رخصة السيارة"] + "," + sample["نوع الجير"] + "," + sample["الزجاج"] + "," + sample["قوة الماتور"] + "," + sample["عداد السيارة"] + "," + sample["عدد الركاب"] + "," + sample["وسيلة الدفع"] + "," + sample["معروضة"] + "," + sample["أصحاب سابقون"] + "," + sample["إضافات"] + "\n"
     file.close()
-    print(counter,"/6864")
-    counter += 1
 new_file = open("test.csv","x",encoding="utf-8")
 for index,header in enumerate(headers):
     if(index != 0):
         new_file.write(",")
     new_file.write(header)
 new_file.write("\n")
-new_file.writelines(res)
-new_file.close()
-
-# Removing Redundant data
-
-counter = 1
-old_file = open('test.csv','r',encoding="utf-8")
-new_file = open('new_test.csv','w',encoding="utf-8")
-seen = set()
-for line in old_file:
-   print(counter,"/5721")
-   if line in seen:
-       continue
-   seen.add(line)
-   new_file.write(line)
-   counter += 1
-old_file.close()
+new_file.writelines(result)
 new_file.close()
