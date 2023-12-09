@@ -1,14 +1,17 @@
 
-from sklearn.preprocessing import OneHotEncoder, LabelEncoder
+from sklearn.preprocessing import LabelEncoder
 from transformation_functions import *
-from flask import Flask,request
+from flask import Flask, request, render_template, url_for
 import pickle
+import numpy as np
 
 kNN_pickle_file = "kNN_regression_model.pkl"  
 with open(kNN_pickle_file, 'rb') as file:  
     kNN_Model = pickle.load(file)
 
 def transform_to_df_from_dict(dict):
+     
+    dict = {k: str(v).strip() for k, v in dict.items()}
 
     dict["kilometers_driven"] = convert_car_meter(dict["kilometers_driven"])
 
@@ -68,6 +71,9 @@ def transform_to_df_from_dict(dict):
     
     resulted_df[df.columns] = df[df.columns].iloc[:1]
 
+    resulted_df["كهرباء"] = resulted_df["كهرباء"]*2.5
+    resulted_df["هايبرد"] = resulted_df["هايبرد"]*1.5
+
     return resulted_df
 
 def predict_price(df):
@@ -75,13 +81,19 @@ def predict_price(df):
 
 app = Flask(__name__)
 
-@app.route("/",methods=["POST"])
-def hello():
-    df = transform_to_df_from_dict(request.get_json())
-    df = df.drop(columns=["brand","model","fuel_type","transmission_type","vehicle_history","previous_owners_ranges","previous_owners","kilometers_driven","seats","seats_ranges","licence","windows_type","payment_method"]).reset_index(drop=True)
-    df = df[features_final_order]
-    return str(round(predict_price(df)))
+@app.route("/predict",methods=["POST"])
+def predict():
+    try:
+        df = transform_to_df_from_dict(request.get_json())
+        df = df.drop(columns=["brand","model","fuel_type","transmission_type","vehicle_history","previous_owners_ranges","previous_owners","kilometers_driven","seats","seats_ranges","licence","windows_type","payment_method"]).reset_index(drop=True)
+        df = df[features_final_order]
+        return str(round(predict_price(df)))
+    except:
+        return "An Error occurred",500
 
+@app.route("/",methods=["GET"])
+def home():
+    return render_template("index.html")
 
 
 if __name__ == '__main__':

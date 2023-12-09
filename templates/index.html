@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Prediction</title>
+</head>
+<style>
+    /* * {
+    box-sizing: border-box;
+    } */
+    a {
+    text-decoration: none;
+    }
+    html,
+    head,
+    body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(5, 1, 8);
+    overflow: hidden;
+    }
+    .picture-holder{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+    }
+    .main-picture{
+        height: 100%;
+    }
+    .container{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: fit-content;
+        width: 100%;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .main{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    .row{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: violet;
+    }
+    .row > p{
+        margin: 2px;
+        background-color: rgba(5,0,10,0.8);
+        color: white;
+    }
+    .main >h2{
+        margin: 5px;
+    }
+</style>
+<body>
+    <div class="picture-holder">
+        <img class="main-picture" src="{{url_for('static', filename='3000gt_vr4.jpg')}}" />
+    </div>
+    <div class="container">
+        <div class="main">
+            <h2>Car Price Prediction API</h2>
+            <h2>API Endpoint: /predict, method: POST</h2>
+            <h3 style="max-width: 80%; text-align: center;">Here are the keys that you should send using the API to predict your car price</h3>
+            <div class="params-table">
+                <div class="row"><p>brand: </p> @String, Cars Brand</div>
+                <div class="row"><p>model: </p> @String, Cars Model</div>
+                <div class="row"><p>year: </p> @Number, Cars Release Year</div>
+                <div class="row"><p>fuel_type: </p> @String, Cars Fuel Type .e.g: بنزين, ديزل </div>
+                <div class="row"><p>vehicle_history: </p> @String, Cars History .e.g: خصوصي, عمومي</div>
+                <div class="row"><p>licence: </p> @String, Cars Licence .e.g: فلسطينية , نمرة صفراء </div>
+                <div class="row"><p>transmission_type: </p> @String, Cars Transmission .e.g: عادي, اوتوماتيك </div>
+                <div class="row"><p>windows_type: </p> @String, Cars Winodws .e.g: الكتروني, يدوي </div>
+                <div class="row"><p>engine_capacity: </p> @Number, Cars Engine Capacity (cc)</div>
+                <div class="row"><p>kilometers_driven: </p> @Number, Cars Driven Kilometers (km)</div>
+                <div class="row"><p>seats: </p> @Number/String, Cars Number of Seats .e.g: 4 + 1, 5 ...</div>
+                <div class="row"><p>payment_method: </p> @String, Payment Method .e.g:  نقدا فقط, إمكانية التقسيط  </div>
+                <div class="row"><p>previous_owners: </p> @Number/String, Number of Previous Owners</div>
+                <div class="row"><p>radio: </p> @Number, If car has Radio give value (1) if not give (0)</div>
+                <div class="row"><p>air_conditioner: </p> @Number, If car has Air Conditioner give value (1) if not give (0)</div>
+                <div class="row"><p>central_lock: </p> @Number, If car has Central Lock give value (1) if not give (0)</div>
+                <div class="row"><p>airbag: </p> @Number, If car has Airbag give value (1) if not give (0)</div>
+                <div class="row"><p>alert_system: </p> @Number, If car has Alert System give value (1) if not give (0)</div>
+                <div class="row"><p>leather_seats: </p> @Number, If car has Leather Seats give value (1) if not give (0)</div>
+                <div class="row"><p>sunroof: </p> @Number, If car has Sunroof give value (1) if not give (0)</div>
+                <div class="row"><p>panoramic sunroof: </p> @Number, If car has Panoramic Sunroof give value (1) if not give (0)</div>
+            </div>
+        </div>
+</div>
+</body>
+</html>
