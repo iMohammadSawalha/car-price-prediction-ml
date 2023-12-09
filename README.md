@@ -17,44 +17,44 @@ If you want to test the API, you can run the `server.py`  and go to the endpoint
 Here are the params that you can send in the POST body:
 
 
-`brand`: `@String`, Cars Brand
+`brand(الشركة المصنعة)`: `@String`, Cars Brand
 
-`model`: `@String`, Cars Model
+`model(موديل السيارة)`: `@String`, Cars Model
 
-`year`: `@Number`, Cars Release Year
+`year(سنة الانتاج)`: `@Number`, Cars Release Year
 
-`fuel_type`: `@String`, Cars Fuel Type .e.g: بنزين, ديزل
+`fuel_type(نوع الوقود)`: `@String`, Cars Fuel Type .e.g: بنزين, ديزل
 
-`vehicle_history`: `@String`, Cars History .e.g: خصوصي, عمومي
+`vehicle_history(أصل السيارة)`: `@String`, Cars History .e.g: خصوصي, عمومي
 
-`licence`: `@String`, Cars Licence .e.g: فلسطينية , نمرة صفراء
+`licence(رخصة السيارة)`: `@String`, Cars Licence .e.g: فلسطينية , نمرة صفراء
 
-`transmission_type`: `@String`, Cars Transmission .e.g: عادي, اوتوماتيك
+`transmission_type(نوع الجير)`: `@String`, Cars Transmission .e.g: عادي, اوتوماتيك
 
-`windows_type`: `@String`, Cars Winodws .e.g: الكتروني, يدوي
+`windows_type(الشباك)`: `@String`, Cars Winodws .e.g: الكتروني, يدوي
 
-`engine_capacity`: `@Number`, Cars Engine Capacity (cc)
+`engine_capacity(سعة المحرك)`: `@Number`, Cars Engine Capacity (cc)
 
-`kilometers_driven`: `@Number`, Cars Driven Kilometers (km)
+`kilometers_driven(عداد السيارة)`: `@Number`, Cars Driven Kilometers (km)
 
-`seats`: `@Number/String`, Cars Number of Seats .e.g: 4 + 1, 5 ...
+`seats(عدد كراسي السيارة)`: `@Number/String`, Cars Number of Seats .e.g: 4 + 1, 5 ...
 
-`payment_method`: `@String`, Payment Method .e.g:  نقدا فقط, إمكانية التقسيط
+`payment_method(طريقة الدفع)`: `@String`, Payment Method .e.g:  نقدا فقط, إمكانية التقسيط
 
-`previous_owners`: `@Number/String`, Number of Previous Owners
+`previous_owners(اصحاب سابقون)`: `@Number/String`, Number of Previous Owners
 
-`radio`: `@Number`, If car has Radio give value (1) if not give (0)
+`radio(يوجد راديو)`: `@Number`, If car has Radio give value (1) if not give (0)
 
-`air_conditioner`: `@Number`, If car has Air Conditioner give value (1) if not give (0)
+`air_conditioner(يوجد مكيف)`: `@Number`, If car has Air Conditioner give value (1) if not give (0)
 
-`central_lock`: `@Number`, If car has Central Lock give value (1) if not give (0)
+`central_lock(يوجد اغلاق مركزي)`: `@Number`, If car has Central Lock give value (1) if not give (0)
 
-`airbag`: `@Number`, If car has Airbag give value (1) if not give (0)
+`airbag(يوجد وسادة هوائية)`: `@Number`, If car has Airbag give value (1) if not give (0)
 
-`alert_system`: `@Number`, If car has Alert System give value (1) if not give (0)
+`alert_system(يوجد جهاز انذار)`: `@Number`, If car has Alert System give value (1) if not give (0)
 
-`leather_seats`: `@Number`, If car has Leather Seats give value (1) if not give (0)
+`leather_seats(يوجد مقاعد جلد)`: `@Number`, If car has Leather Seats give value (1) if not give (0)
 
-`sunroof`: `@Number`, If car has Sunroof give value (1) if not give (0)
+`sunroof(فتحة سقف)`: `@Number`, If car has Sunroof give value (1) if not give (0)
 
-`panoramic sunroof`:  `@Number`, If car has Panoramic Sunroof give value (1) if not give (0)
+`panoramic sunroof(سقف بانوراما)`:  `@Number`, If car has Panoramic Sunroof give value (1) if not give (0)
